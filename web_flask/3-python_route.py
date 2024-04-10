@@ -21,12 +21,13 @@ def hbnb():
 
 @app.route('/c/<text>')
 def c(text):
-    return "C " + {text.replace('_', ' ')}
+    return "C " + text.replace('_', ' ')
+
 
 @app.route('/python')
 @app.route('/python/<text>')
 def python(text='is cool'):
-    return "Python " + {text.replace('_', ' ')}
+    return "Python " + text.replace('_', ' ')
 
 
 if __name__ == '__main__':
