@@ -38,9 +38,10 @@ class DBStorage:
         """Returns dict of current database"""
         # fmt: off
         from_databases = {}
-        cls_dictionary = {"BaseModel": BaseModel, "User": User, "Place": Place,
-                        "State": State, "City": City, "Amenity": Amenity,
-                        "Review": Review}
+        cls_dictionary = {
+                        "BaseModel": BaseModel, "User": User,
+                        "Place": Place, "State": State, "City": City,
+                        "Amenity": Amenity, "Review": Review}
         # fmt: on
         if cls:
             for key in cls_dictionary.keys():
@@ -56,14 +57,13 @@ class DBStorage:
                 from_databases[objectkey] = obj
             return from_databases
         # fmt: off
-        queried_classes = (self.__session
-                        .query(City, State, User, Place,
-                                Review, Amenity).filter(
-                                City.state_id == State.id,
-                                Place.user_id == User.id,
-                                Place.city_id == City.id,
-                                Review.place_id == Place.id,
-                                Review.user_id == User.id,).all())
+        queried_classes = (self.__session.query(City, State, User,
+                                                Place, Review, Amenity).filter(
+            City.state_id == State.id,
+            Place.user_id == User.id,
+            Place.city_id == City.id,
+            Review.place_id == Place.id,
+            Review.user_id == User.id).all())
         # fmt: on
         for instances in queried_classes:
             for obj in range(0, len(instances)):
