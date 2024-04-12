@@ -49,15 +49,9 @@ def odd_or_even(n):
 @app.route('/states_list', strict_slashes=False)
 def display_states():
     """Render state_list.html"""
-    states = storage.all()
+    states = storage.all(State)
     states = sorted(states.values(), key=lambda state: state.name)
     return render_template('7-states_list.html', states=states)
-
-
-@app.teardown_appcontext
-def teardown(exception):
-    """Remove SQLAlchemy Session"""
-    storage.close()
 
 
 if __name__ == '__main__':
