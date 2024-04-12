@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """Script that starts a Flask web application"""
 
+import sys
+sys.path.append('/home/osvaldo_jose1/holbertonschool-AirBnB_clone_v2')
 from flask import Flask, render_template
 from models import storage
 from models.state import State
-import sys
-sys.path.append('/home/osvaldo_jose1/holbertonschool-AirBnB_clone_v2')
 
 
 app = Flask(__name__)
@@ -62,14 +62,14 @@ def display_cities():
     return render_template('8-cities_by_states.html', states=states)
 
 
-@app.router('/states', strict_slashes=False)
-@app.router('/states/<id>', strict_slashes=False)
+@app.route('/states', strict_slashes=False)
+@app.route('/states/<id>', strict_slashes=False)
 def states():
     states = storage.all(State).values()
     if id:
         for state in states:
             if state.id == id:
-                return render_template('9-states.html', state=state)
+                return render_template('9-states.html', states=states)
         return ("Not Found")
     else:
         return render_template('9-states.html', states=states)
