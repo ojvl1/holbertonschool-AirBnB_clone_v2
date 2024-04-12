@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """Script that starts a Flask web application"""
-
+import sys
 from flask import Flask, render_template
+sys.path.append('/home/osvaldo_jose1/holbertonschool-AirBnB_clone_v2')
 from models import storage
 from models.state import State
-import sys
-sys.path.append('/home/osvaldo_jose1/holbertonschool-AirBnB_clone_v2')
+
+
 
 
 app = Flask(__name__)
@@ -56,7 +57,7 @@ def display_states():
 
 
 @app.route('/cities_by_states', strict_slashes=False)
-def cities():
+def display_cities():
     states = storage.all(State)
     states = sorted(states.values(), key=lambda state: state.name)
     return render_template('8-cities_by_states.html', states=states)
