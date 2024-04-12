@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """Script that starts a Flask web application"""
 
-import sys
 from flask import Flask, render_template
-sys.path.append('/home/osvaldo_jose1/holbertonschool-AirBnB_clone_v2')
 from models import storage
 from models.state import State
+import sys
+sys.path.append('/home/osvaldo_jose1/holbertonschool-AirBnB_clone_v2')
+
 
 app = Flask(__name__)
 
