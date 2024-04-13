@@ -55,6 +55,11 @@ def display_states():
     return render_template('7-states_list.html', states=states)
 
 
+@app.teardown_appcontext
+def teardown(exception=None):
+    storage.close()
+
+
 @app.route('/cities_by_states', strict_slashes=False)
 def display_cities():
     states = storage.all(State)
