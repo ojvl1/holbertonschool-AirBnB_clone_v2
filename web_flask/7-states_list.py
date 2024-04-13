@@ -55,5 +55,10 @@ def display_states():
     return render_template('7-states_list.html', states=states)
 
 
+@app.teardown_appcontext
+def teardown(exception=None):
+    storage.close()
+
+
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5000)
