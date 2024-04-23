@@ -10,7 +10,7 @@ header {
 .logo {
 	height: 100%;
 	width: 100%;
-	background-image: url('static/images/logo.png');
+	background-image: url('/web_flask/static/images/logo.png');
 	background-repeat: no-repeat;
 	background-position: left;
 	margin-left: 20px;
